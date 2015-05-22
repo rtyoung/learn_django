@@ -1,0 +1,6 @@
+bin
+include
+lib
+*.sublime-project
+*.sublime-workspace
+
