@@ -1,13 +1,69 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 
-<html>
 
-<head>
-	<title></title>
-</head>
+{% block head_title %}
+	Welcome |
+	{{ block.super }}
+{% endblock %}
 
-<body>
-	<h1>{{ title }}</h1>
-</body>
+<style type="text/css">
+{% block style %}
 
-</html>
+.navbar-fixed-top {
+	margin-bottom: 0px !important;
+}
+
+.jumbotron {
+	background-color: #0E3D14;
+	color: #FFF;
+}
+
+{% endblock %}
+</style>
+
+
+{% block jumbotron%}
+
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class='col-xs-6'>
+					<h1>HELLO THERE!</h1>
+					<p class='lead'>
+						This is my landing page of my introductory website!. There will be porfolio content and shit here!
+					<p>
+						<a class="btn btn-lg btn-primary" href="#" role="button">Join Us &raquo;</a>
+					</p>
+				</div>
+				<div class='col-xs-6' style="background-color:black; height:300px;">
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+{% block content %}
+	<div class="row">
+
+		<div class="col-sm-3 pull-right">
+			<p class='lead text-align-center'>{{ title }}</p>
+
+			<form method='POST' action=''> {% csrf_token %}
+				{{ form|crispy }}
+				<input class = 'btn btn-primary' type='submit' value='Sign Up'/>
+			</form>
+		</div>
+		<div class='col-sm-3'>
+			<p class='lead text-align-center'>Built with Django &amp; Bootstrap</p>
+		</div>
+		<div class='col-sm-3'>
+			<p class='lead text-align-center'>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.
+			</p>
+		</div>
+		<div class='col-sm-3 text-align-center'>
+			<p class='lead'>Some more Lorum Ipsum filler text for the time being...</p>
+		</div>
+	</div>
+{% endblock %}

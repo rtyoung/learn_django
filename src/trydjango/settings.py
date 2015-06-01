@@ -27,16 +27,27 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'yourgmail@gmail.com'
+EMAIL_HOST_PASSWORD = 'yourpassword'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Application definition
 
 INSTALLED_APPS = (
+    #django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #third party apps
+    'crispy_forms',
+    'registration',
+    #my apps
     'newsletter',
 )
 
@@ -73,7 +84,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'trydjango.wsgi.application'
 
 
-# Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
@@ -102,3 +112,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static_in_project", "static_root")
+
+STATICFILES_DIRS =(
+    os.path.join(BASE_DIR, "static_in_project", "our_static"),
+    #'/var/www/static/',
+)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "static_in_project", "media_root")
+
+
+# CRISY form tags setting
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+#DJANGO REGISTRATION REDUX settings
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
